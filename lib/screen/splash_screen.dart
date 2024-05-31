@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'home_screen.dart'; // Ensure this import is correct
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -15,8 +16,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(Duration(seconds: 3), () {});
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MainContent())); // Assuming MainContent is your main app's home page
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomeEModeScreen()),
+    );
   }
 
   @override
@@ -24,8 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       body: Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(Colors.cyan[600]),
+        child: Text(
+          'Nutri-Track',
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.cyan[600] ?? Colors.white,
+          ),
         ),
       ),
     );
